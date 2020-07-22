@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:headline/helper/data.dart';
+import 'package:headline/helper/news.dart';
 import 'package:headline/main.dart';
+import 'package:headline/models/article_model.dart';
 import 'package:headline/models/catgory_model.dart';
 
 void main() => runApp(MyApp());
@@ -12,11 +14,22 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<CategoryModel> categories = new List<CategoryModel>();
+  List<ArticleModel> articles = new List<ArticleModel>();
+  bool _loading = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     categories = getCategories();
+  }
+
+  getNews() async {
+    News news = News();
+    await news.getNews();
+    articles = news.news;
+    setState(() {
+      _loading = false;
+    });
   }
 
   @override
@@ -37,25 +50,31 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              height: 70,
-              child: ListView.builder(
-                  itemCount: categories.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return CategoryTile(
-                      imageUrl: categories[index].imageUrl,
-                      categoryName: categories[index].categoryName,
-                    );
-                  }),
-            )
-          ],
-        ),
+      body: Center(
+        child: _loading
+            ? Container(
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      height: 70,
+                      child: ListView.builder(
+                          itemCount: categories.length,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return CategoryTile(
+                              imageUrl: categories[index].imageUrl,
+                              categoryName: categories[index].categoryName,
+                            );
+                          }),
+                    )
+                  ],
+                ),
+              ),
       ),
     );
   }
