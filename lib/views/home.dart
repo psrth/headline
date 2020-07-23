@@ -6,6 +6,7 @@ import 'package:headline/main.dart';
 import 'package:headline/models/article_model.dart';
 import 'package:headline/models/catgory_model.dart';
 import 'package:headline/views/article_view.dart';
+import 'package:headline/views/category_news.dart';
 
 void main() => runApp(MyApp());
 
@@ -110,7 +111,14 @@ class CategoryTile extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryNews(
+                      category: categoryName.toString().toLowerCase(),
+                    )));
+      },
       child: Container(
         margin: EdgeInsets.only(right: 16),
         child: Stack(

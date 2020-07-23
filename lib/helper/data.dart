@@ -4,6 +4,13 @@ List<CategoryModel> getCategories() {
   List<CategoryModel> category = new List<CategoryModel>();
   CategoryModel categoryModel = new CategoryModel();
 
+// 6 — Science
+  categoryModel.categoryName = "General";
+  categoryModel.imageUrl =
+      "https://images.unsplash.com/photo-1584931423298-c576fda54bd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80";
+  category.add(categoryModel);
+  categoryModel = new CategoryModel();
+
   // 1 — business
   categoryModel.categoryName = "Business";
   categoryModel.imageUrl =
@@ -12,7 +19,7 @@ List<CategoryModel> getCategories() {
   categoryModel = new CategoryModel();
 
   // 2 — COVID
-  categoryModel.categoryName = "COVID-19";
+  categoryModel.categoryName = "Health";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1584521764592-48f33fe7e088?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
   category.add(categoryModel);
@@ -39,8 +46,8 @@ List<CategoryModel> getCategories() {
   category.add(categoryModel);
   categoryModel = new CategoryModel();
 
-  // 6 — World Newa
-  categoryModel.categoryName = "World News";
+  // 6 — Science
+  categoryModel.categoryName = "Science";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1584931423298-c576fda54bd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80";
   category.add(categoryModel);
