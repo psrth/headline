@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:headline/helper/data.dart';
 import 'package:headline/helper/news.dart';
@@ -21,6 +22,7 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     categories = getCategories();
+    getNews();
   }
 
   getNews() async {
@@ -55,24 +57,41 @@ class _HomeState extends State<Home> {
             ? Container(
                 child: CircularProgressIndicator(),
               )
-            : Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      height: 70,
-                      child: ListView.builder(
-                          itemCount: categories.length,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return CategoryTile(
-                              imageUrl: categories[index].imageUrl,
-                              categoryName: categories[index].categoryName,
-                            );
-                          }),
-                    )
-                  ],
+            : SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    children: <Widget>[
+                      /// categories widget bar
+                      Container(
+                        height: 70,
+                        child: ListView.builder(
+                            itemCount: categories.length,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return CategoryTile(
+                                imageUrl: categories[index].imageUrl,
+                                categoryName: categories[index].categoryName,
+                              );
+                            }),
+                      ),
+
+                      /// blog post scroll section
+                      Container(
+                        padding: EdgeInsets.only(top: 16),
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: articles.length,
+                            itemBuilder: (context, index) {
+                              return BlogTile(
+                                  imageUrl: articles[index].urlToImage,
+                                  title: articles[index].title,
+                                  desc: articles[index].description);
+                            }),
+                      ),
+                    ],
+                  ),
                 ),
               ),
       ),
@@ -94,8 +113,8 @@ class CategoryTile extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
-              child: Image.network(
-                imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
                 width: 120,
                 height: 60,
                 fit: BoxFit.cover,
