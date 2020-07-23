@@ -49,7 +49,7 @@ List<CategoryModel> getCategories() {
   // 6 — Science
   categoryModel.categoryName = "Science";
   categoryModel.imageUrl =
-      "https://images.unsplash.com/photo-1584931423298-c576fda54bd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80";
+      "https://images.unsplash.com/photo-1564325724739-bae0bd08762c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
   category.add(categoryModel);
   categoryModel = new CategoryModel();
 

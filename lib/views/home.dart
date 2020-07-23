@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       /// categories widget bar
                       Container(
-                        height: 70,
+                        height: 80,
                         child: ListView.builder(
                             itemCount: categories.length,
                             shrinkWrap: true,
@@ -128,14 +128,14 @@ class CategoryTile extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: imageUrl,
                 width: 120,
-                height: 60,
+                height: 70,
                 fit: BoxFit.cover,
               ),
             ),
             Container(
               alignment: Alignment.center,
               width: 120,
-              height: 60,
+              height: 70,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 color: Colors.black26,
