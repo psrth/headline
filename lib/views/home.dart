@@ -82,6 +82,7 @@ class _HomeState extends State<Home> {
                         padding: EdgeInsets.only(top: 16),
                         child: ListView.builder(
                             shrinkWrap: true,
+                            physics: ClampingScrollPhysics(),
                             itemCount: articles.length,
                             itemBuilder: (context, index) {
                               return BlogTile(
@@ -152,8 +153,34 @@ class BlogTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20),
       child: Column(
-        children: <Widget>[Image.network(imageUrl), Text(title), Text(desc)],
+        children: <Widget>[
+          ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.network(imageUrl)),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.black87,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            desc,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black54,
+            ),
+          )
+        ],
       ),
     );
   }
