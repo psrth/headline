@@ -1,4 +1,4 @@
-# headline
+# headline 📰
 Meet Headline — a one stop solution for all your news-related needs.
 
 ## Features
