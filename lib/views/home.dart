@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   bool _loading = true;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     categories = getCategories();
@@ -105,7 +106,6 @@ class _HomeState extends State<Home> {
 }
 
 class CategoryTile extends StatelessWidget {
-  @override
   final String imageUrl, categoryName;
   CategoryTile({@required this.imageUrl, this.categoryName});
 
